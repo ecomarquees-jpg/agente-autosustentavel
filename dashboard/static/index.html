@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Controle — Negócio Digital Autossustentável</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="logo-box">🤖 AI BIZ</div>
+            <div>
+                <h1>Agente Autossustentável — Negócio Digital</h1>
+                <p class="subtitle">Equipe de 6 Agentes Especializados | Supervisão Humana Obrigatória (HITL)</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="btn btn-dark" id="btn-auto-loop" onclick="toggleAutonomousLoop()">🤖 Modo 100% Autônomo: DESATIVADO</button>
+            <button class="btn btn-primary" id="btn-run-cycle" onclick="runAutonomousCycle()">⚡ Ciclo Avulso</button>
+            <button class="btn btn-secondary" onclick="openSaleModal()">➕ Registrar Venda Real</button>
+            <button class="btn btn-outline" onclick="openExpenseModal()">➖ Registrar Despesa</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 1. Alerta de Sobrevivência & Status -->
+        <section id="survival-banner" class="banner banner-deficit">
+            <div class="banner-content">
+                <div class="banner-title" id="survival-status-title">🔍 Avaliando Sobrevivência Financeira...</div>
+                <div class="banner-text" id="survival-status-desc">O motor contábil compara despesas operacionais planejadas com receitas efetivas.</div>
+            </div>
+            <button class="btn btn-sm btn-dark" onclick="triggerSurvivalCheck()">Reavaliar Diagnóstico</button>
+        </section>
+
+        <!-- 2. Cartões de Indicadores Financeiros (KPIs) -->
+        <section class="kpi-grid">
+            <div class="kpi-card">
+                <span class="kpi-label">Saldo em Caixa (Efetivo)</span>
+                <span class="kpi-value text-green" id="kpi-balance">R$ 0,00</span>
+                <span class="kpi-sub">Compensado em conta</span>
+            </div>
+            <div class="kpi-card">
+                <span class="kpi-label">Receita Realizada</span>
+                <span class="kpi-value text-blue" id="kpi-revenue">R$ 0,00</span>
+                <span class="kpi-sub">Vendas pagas e confirmadas</span>
+            </div>
+            <div class="kpi-card">
+                <span class="kpi-label">Despesas Efetivas</span>
+                <span class="kpi-value text-red" id="kpi-expenses">R$ 0,00</span>
+                <span class="kpi-sub">Custos reais desembolsados</span>
+            </div>
+            <div class="kpi-card">
+                <span class="kpi-label">Resultado Líquido</span>
+                <span class="kpi-value" id="kpi-net">R$ 0,00</span>
+                <span class="kpi-sub">Meta desejada: +R$ 100,00</span>
+            </div>
+            <div class="kpi-card">
+                <span class="kpi-label">Progresso da Meta (R$ 300)</span>
+                <span class="kpi-value" id="kpi-progress">0%</span>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="kpi-progress-bar" style="width: 0%;"></div>
+                </div>
+                <span class="kpi-sub">Mínimo para cobrir custos: R$ 200,00</span>
+            </div>
+        </section>
+
+        <!-- 3. Equipe de Agentes -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Equipe de 6 Agentes Especializados</h2>
+                <span class="badge badge-info" id="agents-count">6 Agentes Ativos</span>
+            </div>
+            <div class="agents-grid" id="agents-grid">
+                <!-- Preenchido via JavaScript -->
+            </div>
+        </section>
+
+        <!-- 4. Fila de Produtos e Aprovação Humana -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Cofre de Produtos Digitais & Fila de Aprovação Humana</h2>
+                <span class="badge badge-warning" id="products-waiting-badge">0 Aguardando Aprovação</span>
+            </div>
+            <div class="table-container">
+                <table class="table" id="products-table">
+                    <thead>
+                        <tr>
+                            <th>ID / Tipo</th>
+                            <th>Título do Produto</th>
+                            <th>Preço</th>
+                            <th>Nota Auditoria</th>
+                            <th>Status Atual</th>
+                            <th>Ações de Supervisão Humana</th>
+                        </tr>
+                    </thead>
+                    <tbody id="products-tbody">
+                        <tr><td colspan="6" class="text-center">Nenhum produto gerado ainda. Clique em "Executar Ciclo Autônomo" acima.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 4.1 Calendário Editorial do Facebook (Agente 8) -->
+        <section class="section">
+            <div class="section-header">
+                <h2>📅 Calendário Editorial & Posts Prontos para Facebook (Agente 8)</h2>
+                <span class="badge badge-success" id="fb-posts-count">4 Posts Semanais Prontos</span>
+            </div>
+            <div class="fb-calendar-grid" id="fb-calendar-grid">
+                <!-- Preenchido via JavaScript -->
+            </div>
+        </section>
+
+        <!-- 4.2 Ideias Estratégicas de Inovação & Escala (Agente 7) -->
+        <section class="section">
+            <div class="section-header">
+                <h2>💡 Propostas de Crescimento & Escala do Negócio (Agente 7)</h2>
+                <span class="badge badge-info" id="ideas-count">5 Ideias Prontas</span>
+            </div>
+            <div class="ideas-grid" id="ideas-grid">
+                <!-- Preenchido via JavaScript -->
+            </div>
+        </section>
+
+        <!-- 5. Duas Colunas: Oportunidades & Tarefas Recentes -->
+        <div class="two-col-grid">
+            <section class="section">
+                <div class="section-header">
+                    <h2>Oportunidades de Mercado Pesquisadas</h2>
+                </div>
+                <div class="list-cards" id="opportunities-list">
+                    <p class="text-muted">Nenhuma oportunidade registrada ainda.</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <h2>Tarefas Recentes da Equipe</h2>
+                </div>
+                <div class="list-cards" id="tasks-list">
+                    <p class="text-muted">Nenhuma tarefa executada ainda.</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- 6. Duas Colunas: Livro-Caixa e Auditoria Geral -->
+        <div class="two-col-grid">
+            <section class="section">
+                <div class="section-header">
+                    <h2>Livro-Caixa & Movimentações (Auditável)</h2>
+                </div>
+                <div class="table-container">
+                    <table class="table" id="transactions-table">
+                        <thead>
+                            <tr>
+                                <th>Tipo</th>
+                                <th>Descrição</th>
+                                <th>Valor (R$)</th>
+                                <th>Classificação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactions-tbody">
+                            <!-- JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <h2>Trilha de Auditoria e Segurança</h2>
+                </div>
+                <div class="table-container">
+                    <table class="table" id="audit-table">
+                        <thead>
+                            <tr>
+                                <th>Agente</th>
+                                <th>Severidade</th>
+                                <th>Mensagem</th>
+                            </tr>
+                        </thead>
+                        <tbody id="audit-tbody">
+                            <!-- JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal: Registrar Venda Real -->
+    <div id="modal-sale" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3>Registrar Venda Efetivamente Recebida</h3>
+                <span class="close-modal" onclick="closeSaleModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p class="text-muted">Apenas registre vendas confirmadas na sua plataforma/conta bancária. Não insira valores estimados.</p>
+                <div class="form-group">
+                    <label>Valor Recebido Líquido (R$):</label>
+                    <input type="number" step="0.01" id="sale-amount" placeholder="Ex: 34.90">
+                </div>
+                <div class="form-group">
+                    <label>Descrição da Venda:</label>
+                    <input type="text" id="sale-desc" placeholder="Ex: Venda Guia de Automação via Kiwify">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeSaleModal()">Cancelar</button>
+                <button class="btn btn-primary" onclick="submitRealSale()">Confirmar Receita</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Registrar Despesa Real -->
+    <div id="modal-expense" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3>Registrar Despesa Operacional Paga</h3>
+                <span class="close-modal" onclick="closeExpenseModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p class="text-muted">Apenas registre custos expressamente autorizados e já desembolsados.</p>
+                <div class="form-group">
+                    <label>Valor Pago (R$):</label>
+                    <input type="number" step="0.01" id="expense-amount" placeholder="Ex: 40.00">
+                </div>
+                <div class="form-group">
+                    <label>Descrição do Custo:</label>
+                    <input type="text" id="expense-desc" placeholder="Ex: Registro anual de domínio ou ferramenta">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeExpenseModal()">Cancelar</button>
+                <button class="btn btn-danger" onclick="submitRealExpense()">Confirmar Despesa</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Visualizador de Produto / Copy -->
+    <div id="modal-preview" class="modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-header">
+                <h3 id="preview-title">Visualização do Ativo</h3>
+                <span class="close-modal" onclick="closePreviewModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <pre id="preview-content" class="preview-box"></pre>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closePreviewModal()">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

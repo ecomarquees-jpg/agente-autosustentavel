@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: agente-negocio-digital
+    env: python
+    buildCommand: ""
+    startCommand: python main.py --dashboard --port $PORT --auto
+    envVars:
+      - key: PORT
+        value: 10000

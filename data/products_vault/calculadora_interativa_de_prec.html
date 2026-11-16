@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora Interativa de Precificação de Serviços Digitais (Versão Especial 34)</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #f8fafc; padding: 2rem; }
+        .card { max-width: 600px; margin: 0 auto; background: #1e293b; border-radius: 12px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+        h1 { font-size: 1.4rem; color: #38bdf8; margin-top: 0; }
+        label { display: block; margin-top: 14px; font-size: 0.9rem; color: #94a3b8; }
+        input { width: 100%; box-sizing: border-box; padding: 10px; margin-top: 6px; background: #0f172a; border: 1px solid #334155; color: #fff; border-radius: 6px; }
+        button { width: 100%; margin-top: 20px; padding: 12px; background: #0ea5e9; color: #fff; font-weight: bold; border: none; border-radius: 6px; cursor: pointer; }
+        button:hover { background: #0284c7; }
+        .result { margin-top: 20px; padding: 16px; background: #022c22; border: 1px solid #059669; border-radius: 8px; color: #34d399; font-size: 1.1rem; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Calculadora Interativa de Precificação de Serviços Digitais (Versão Especial 34)</h1>
+        <p style="color: #94a3b8; font-size: 0.88rem;">Calcule o valor exato a cobrar por hora técnica e por projeto, cobrindo custos fixos e garantindo sua margem de lucro.</p>
+        
+        <label>Custos Fixos Mensais (R$):</label>
+        <input type="number" id="custos" value="300">
+        
+        <label>Salário Desejado Mensal (R$):</label>
+        <input type="number" id="salario" value="2500">
+        
+        <label>Horas Produtivas por Mês (Ex: 80h):</label>
+        <input type="number" id="horas" value="80">
+
+        <label>Margem de Lucro Desejada (%):</label>
+        <input type="number" id="margem" value="20">
+
+        <button onclick="calcular()">Calcular Preço por Hora</button>
+        
+        <div id="resultado" class="result" style="display:none;"></div>
+    </div>
+
+    <script>
+        function calcular() {
+            const custos = parseFloat(document.getElementById('custos').value) || 0;
+            const salario = parseFloat(document.getElementById('salario').value) || 0;
+            const horas = parseFloat(document.getElementById('horas').value) || 1;
+            const margem = (parseFloat(document.getElementById('margem').value) || 0) / 100;
+            
+            const custoHoraBase = (custos + salario) / horas;
+            const precoHoraFinal = custoHoraBase * (1 + margem);
+            
+            const res = document.getElementById('resultado');
+            res.style.display = 'block';
+            res.innerHTML = '<strong>Preço Mínimo por Hora:</strong> R$ ' + precoHoraFinal.toFixed(2);
+        }
+    </script>
+</body>
+</html>

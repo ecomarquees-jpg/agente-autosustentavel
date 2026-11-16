@@ -1,0 +1,14 @@
+Data;Categoria;Descricao;Tipo;Valor_R$;Status
+01/11/2026;Vendas;Consultoria Tecnica;Receita;1500.00;Realizado
+03/11/2026;Infraestrutura;Hospedagem & Dominio;Despesa;45.00;Realizado
+05/11/2026;Vendas;Venda Kit Planilhas;Receita;27.90;Realizado
+10/11/2026;Custos Fixos;Internet Comercial;Despesa;110.00;Realizado
+15/11/2026;Impostos;DAS MEI Mensal;Despesa;75.00;Realizado
+20/11/2026;Vendas;Template Contrato;Receita;47.00;Realizado
+25/11/2026;Reserva;Aporte Emergencial;Investimento;300.00;Realizado
+
+# RESUMO DE INDICADORES (KPIs):
+# Total Receitas: R$ 1.574,90
+# Total Despesas: R$ 230,00
+# Saldo Liquido: R$ 1.344,90
+# Ponto de Equilibrio (Breakeven): Atingido com margem de seguranca.
