@@ -1,4 +1,4 @@
-# Checklist de Segurança Digital & Backup para Pequenas Empresas (Versão Especial 35)
+# Checklist de Segurança Digital & Backup para Pequenas Empresas (Versão Especial 40)
 *Autor: Equipe Técnica Digital | Edição 2026*
 
 ## Sumário Executivo
