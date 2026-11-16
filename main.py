@@ -4,6 +4,7 @@ Permite executar ciclos via linha de comando ou iniciar o Painel de Controle vis
 Zero dependências externas.
 """
 import sys
+import os
 import argparse
 import time
 from pathlib import Path
@@ -57,7 +58,7 @@ def main():
     parser.add_argument("--status", action="store_true", help="Exibe o relatório executivo e financeiro no terminal")
     parser.add_argument("--dashboard", action="store_true", help="Inicia o Painel de Controle visual no navegador")
     parser.add_argument("--auto", action="store_true", help="Ativa o loop 100% autônomo em segundo plano (24/7)")
-    parser.add_argument("--port", type=int, default=8080, help="Porta para o Painel Web (padrão: 8080)")
+    parser.add_argument("--port", type=int, default=int(os.environ.get("PORT", 8080)), help="Porta para o Painel Web (padrão: 8080 ou $PORT)")
     parser.add_argument("--sale", nargs=2, metavar=("VALOR", "DESCRICAO"), help="Registra uma venda real e compensada (Ex: --sale 34.90 'Venda Kiwify')")
     parser.add_argument("--expense", nargs=2, metavar=("VALOR", "DESCRICAO"), help="Registra uma despesa operacional paga (Ex: --expense 45.00 'Dominio')")
     parser.add_argument("--approve", metavar="PROD_ID", help="Aprova um produto pelo ID (Ação humana HITL)")

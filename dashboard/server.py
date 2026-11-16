@@ -146,7 +146,7 @@ def run_server(workflow, port: int = 8080):
     DashboardRequestHandler.workflow = workflow
     for p in [port, port + 1, port + 2]:
         try:
-            server = http.server.ThreadingHTTPServer(('127.0.0.1', p), DashboardRequestHandler)
+            server = http.server.ThreadingHTTPServer(('0.0.0.0', p), DashboardRequestHandler)
             print(f"[SERVIDOR] Painel de Controle disponível em: http://localhost:{p}")
             return server, p
         except OSError:
